@@ -1,0 +1,15 @@
+services:
+  temporal-ui:
+    container_name: temporal-ui
+    environment:
+      - TEMPORAL_ADDRESS=host.docker.internal:7233
+      - TEMPORAL_CORS_ORIGINS=http://localhost:3000
+    image: temporalio/ui:2.31.2
+    networks:
+      - temporal-network
+    ports:
+      - 8080:8080
+networks:
+  temporal-network:
+    driver: bridge
+    name: temporal-network
